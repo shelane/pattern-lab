@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+
+## Initialize stack and required files
+##
+## Usage: fin init
+
+# Abort if anything fails
+set -e
+#-------------------------- Settings --------------------------------
+
+# PROJECT_ROOT is passed from fin.
+# The following variables are configured in the '.env' file: DOCROOT, SITE_DIRECTORY, SOURCE_ALIAS and others.
+
+DOCROOT_PATH="${PROJECT_ROOT}/${DOCROOT}"
+
+#-------------------------- END: Settings --------------------------------
+
+#-------------------------- Helper functions --------------------------------
+
+source "${PROJECT_ROOT}/.docksal/includes/helpers.sh"
+
+#-------------------------- END: Helper functions --------------------------------
+
+#-------------------------- Functions --------------------------------
+# Initialize local settings files
+install_packages ()
+{
+  nvm install 14.17.0
+  npm create pattern-lab
+}
+
+#-------------------------- END: Functions --------------------------------
+
+#-------------------------- Execution --------------------------------
+
+# Stack initialization
+echo -e "${green_bg} Step 1 ${green} Initializing stack...${NC}"
+fin up
+
+echo
+echo -e "${green_bg} Step 2 ${green} Getting service requirements...${NC}"
+install_packages
+
+echo
+echo -en "${green_bg} DONE! ${NC}"
+
+
+#-------------------------- END: Execution --------------------------------
