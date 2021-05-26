@@ -25,8 +25,8 @@ source "${PROJECT_ROOT}/.docksal/includes/helpers.sh"
 # Initialize local settings files
 install_packages ()
 {
-  nvm install 14.17.0
-  npm create pattern-lab
+  fin exec nvm install 14.17.0
+  fin exec npm create pattern-lab
 }
 
 #-------------------------- END: Functions --------------------------------
